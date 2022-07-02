@@ -25,7 +25,6 @@ import FlowerCheck from './screens/FlowerCheck'
 import ArrangmentCheck from './screens/ArrangmentCheck'
 import TenzorFlow from './screens/TenzorFlow'
 
-
 const App = () => {
   return (
     <Router>
@@ -53,7 +52,6 @@ const App = () => {
           <Route path='/flowers' component={FlowerCheck} />
           <Route path='/arrangments' component={ArrangmentCheck} />
           <Route path='/tenzorflow' component={TenzorFlow} />
-        
         </Container>
       </main>
       <Footer />

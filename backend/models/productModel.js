@@ -15,6 +15,12 @@ const reviewSchema = mongoose.Schema(
   }
 )
 
+const tagsSchema = mongoose.Schema({
+ colors: {type: Array, required: true},
+ flowers: { type: Array, required: true},
+ type: { type: String, required: true}
+});
+
 const productSchema = mongoose.Schema(
   {
     user: {
@@ -59,6 +65,7 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    tags: tagsSchema
   },
   {
     timestamps: true,

@@ -21,12 +21,12 @@ const Header = () => {
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
 
-      <Nav className="mx-auto">
+      <Nav className="d-flex flex-row justify-content-center align-items-center mx-auto">
            <LinkContainer to='/products'>
         <Nav.Link>Аранжировки</Nav.Link>
         </LinkContainer>
       <LinkContainer to='/wizard'>
-        <Nav.Link>Wizard</Nav.Link>
+        <Nav.Link>Асистент</Nav.Link>
         </LinkContainer>
         <Navbar.Brand href="/">
       <img
@@ -34,7 +34,7 @@ const Header = () => {
         alt=""
         className="d-inline-block align-top"
       />
-    </Navbar.Brand>
+  </Navbar.Brand>
     <LinkContainer to='/tenzorflow'>
         <Nav.Link>TenzorFlow</Nav.Link>
         </LinkContainer>

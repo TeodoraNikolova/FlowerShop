@@ -10,6 +10,7 @@ import {
   createProductReview,
 } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
+import FormContainer from '../components/FormContainer'
 
 const ProductScreen = ({ history, match }) => {
   const [qty, setQty] = useState(1)
@@ -25,14 +26,12 @@ const ProductScreen = ({ history, match }) => {
   const { userInfo } = userLogin
 
   const productReviewCreate = useSelector((state) => state.productReviewCreate)
-  const {
-    success: successProductReview,
-    error: errorProductReview,
-  } = productReviewCreate
+  const { success: successProductReview, error: errorProductReview } =
+    productReviewCreate
 
   useEffect(() => {
     if (successProductReview) {
-      alert('Review Submitted!')
+      alert('Дадохтe отзив!')
       setRating(0)
       setComment('')
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
@@ -81,74 +80,72 @@ const ProductScreen = ({ history, match }) => {
                   />
                 </ListGroup.Item>
                 <ListGroup.Item>Цена: {product.price}лв</ListGroup.Item>
-                <ListGroup.Item>
-                  Описание: {product.description}
-                </ListGroup.Item>
+                <ListGroup.Item>Описание: {product.description}</ListGroup.Item>
               </ListGroup>
 
-<Row>
-              <Col md={12}>
-              <Card>
-                <ListGroup variant='flush'>
-                  <ListGroup.Item>
-                    <Row>
-                      <Col>Цена:</Col>
-                      <Col>
-                        <strong>{product.price}лв</strong>
-                      </Col>
-                    </Row>
-                  </ListGroup.Item>
+              <Row>
+                <Col md={12}>
+                  <Card>
+                    <ListGroup variant='flush'>
+                      <ListGroup.Item>
+                        <Row>
+                          <Col>Цена:</Col>
+                          <Col>
+                            <strong>{product.price}лв</strong>
+                          </Col>
+                        </Row>
+                      </ListGroup.Item>
 
-                  <ListGroup.Item>
-                    <Row>
-                      <Col>Статус:</Col>
-                      <Col>
-                        {product.countInStock > 0 ? 'Налично' : 'Изчерпано'}
-                      </Col>
-                    </Row>
-                  </ListGroup.Item>
+                      <ListGroup.Item>
+                        <Row>
+                          <Col>Статус:</Col>
+                          <Col>
+                            {product.countInStock > 0 ? 'Налично' : 'Изчерпано'}
+                          </Col>
+                        </Row>
+                      </ListGroup.Item>
 
-                  {product.countInStock > 0 && (
-                    <ListGroup.Item>
-                      <Row>
-                        <Col>Количество:</Col>
-                        <Col>
-                          <Form.Control
-                            as='select'
-                            value={qty}
-                            onChange={(e) => setQty(e.target.value)}
-                          >
-                            {[...Array(product.countInStock).keys()].map(
-                              (x) => (
-                                <option key={x + 1} value={x + 1}>
-                                  {x + 1}
-                                </option>
-                              )
-                            )}
-                          </Form.Control>
-                        </Col>
-                      </Row>
-                    </ListGroup.Item>
-                  )}
+                      {product.countInStock > 0 && (
+                        <ListGroup.Item>
+                          <Row>
+                            <Col>Количество:</Col>
+                            <Col>
+                              <Form.Control
+                                as='select'
+                                value={qty}
+                                onChange={(e) => setQty(e.target.value)}
+                              >
+                                {[...Array(product.countInStock).keys()].map(
+                                  (x) => (
+                                    <option key={x + 1} value={x + 1}>
+                                      {x + 1}
+                                    </option>
+                                  )
+                                )}
+                              </Form.Control>
+                            </Col>
+                          </Row>
+                        </ListGroup.Item>
+                      )}
 
-                  <ListGroup.Item>
-                  <Row className="justify-content-md-center">
-                  <Col md="auto">
-                    <Button
-                      onClick={addToCartHandler}
-                      className='btn-block text-center '
-                      type='button'
-                      variant='dark'
-                      disabled={product.countInStock === 0}
-                    >
-                      Добави към количката
-                    </Button>
-                    </Col>
-                    </Row>
-                  </ListGroup.Item>
-                </ListGroup>
-              </Card>
-              </Col>
+                      <ListGroup.Item>
+                        <Row className='justify-content-md-center'>
+                          <Col md='auto'>
+                            <Button
+                              onClick={addToCartHandler}
+                              className='btn-block text-center '
+                              type='button'
+                              variant='dark'
+                              disabled={product.countInStock === 0}
+                            >
+                              Добави към количката
+                            </Button>
+                          </Col>
+                        </Row>
+                      </ListGroup.Item>
+                    </ListGroup>
+                  </Card>
+                </Col>
               </Row>
             </Col>
           </Row>
@@ -168,7 +165,14 @@ const ProductScreen = ({ history, match }) => {
                 <ListGroup.Item>
                   <h2>Напишете отзив:</h2>
                   {errorProductReview && (
-                    <Message variant='danger'>{errorProductReview}</Message>
+                    <Message variant='danger'>
+                      Вече сте написали вашият отзив!
+                    </Message>
+                  )}
+                  {successProductReview && (
+                    <Message variant='success'>
+                      Успешно дадохте совят отзив!
+                    </Message>
                   )}
                   {userInfo ? (
                     <Form onSubmit={submitHandler}>
@@ -202,7 +206,8 @@ const ProductScreen = ({ history, match }) => {
                     </Form>
                   ) : (
                     <Message>
-                      Моля <Link to='/login'>влезте в профила си</Link> за да дадете оценка!{' '}
+                      Моля <Link to='/login'>влезте в профила си</Link> за да
+                      дадете оценка!{' '}
                     </Message>
                   )}
                 </ListGroup.Item>
