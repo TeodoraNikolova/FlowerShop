@@ -24,6 +24,7 @@ import ColorScreen from './screens/ColorScreen'
 import FlowerCheck from './screens/FlowerCheck'
 import ArrangmentCheck from './screens/ArrangmentCheck'
 import TenzorFlow from './screens/TenzorFlow'
+import WizardList from './screens/WizardList'
 
 const App = () => {
   return (
@@ -52,6 +53,7 @@ const App = () => {
           <Route path='/flowers' component={FlowerCheck} />
           <Route path='/arrangments' component={ArrangmentCheck} />
           <Route path='/tenzorflow' component={TenzorFlow} />
+          <Route path='/admin/wizardlist' component={WizardList} />
         </Container>
       </main>
       <Footer />

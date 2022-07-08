@@ -11,6 +11,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 const RegisterScreen = ({ location, history }) => {
   const [recaptcha, setRecaptcha] = useState(null)
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [message, setMessage] = useState(null)
@@ -78,6 +79,15 @@ const RegisterScreen = ({ location, history }) => {
               placeholder=''
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
+            ></Form.Control>
+          </Form.Group>
+
+          <Form.Group controlId='phone'>
+            <Form.Label>Телефон:</Form.Label>
+            <Form.Control
+              placeholder=''
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
             ></Form.Control>
           </Form.Group>
 

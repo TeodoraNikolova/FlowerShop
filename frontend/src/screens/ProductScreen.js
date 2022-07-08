@@ -54,7 +54,7 @@ const ProductScreen = ({ history, match }) => {
   }
 
   return (
-    <>
+    <div claasName='d-flex justify-content-center align-items-center'>
       <Link className='btn btn-light my-3' to='/'>
         Назад
       </Link>
@@ -216,7 +216,7 @@ const ProductScreen = ({ history, match }) => {
           </Row>
         </>
       )}
-    </>
+    </div>
   )
 }
 

@@ -2,7 +2,6 @@ export const ProductTypes = {
   BOX: 'box',
   TOY: 'toy',
   BALLOON: 'balloon',
-  WOOD: 'wood',
 }
 
 export const FlowerTypes = {

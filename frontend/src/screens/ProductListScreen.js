@@ -73,8 +73,12 @@ const ProductListScreen = ({ history, match }) => {
           <h1>Всички продукти</h1>
         </Col>
         <Col className='text-right'>
-          <Button className='my-3' variant='dark' onClick={createProductHandler}>
-            <i className='fas fa-plus'></i> Create Product
+          <Button
+            className='my-3'
+            variant='dark'
+            onClick={createProductHandler}
+          >
+            <i className='fas fa-plus'></i> Нов продукт
           </Button>
         </Col>
       </Row>

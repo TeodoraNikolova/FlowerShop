@@ -1,9 +1,9 @@
 import asyncHandler from 'express-async-handler'
-import generateToken from '../utilis/generateToken.js'  
+import generateToken from '../utilis/generateToken.js'
 import User from '../models/userModel.js'
 
 const authUser = asyncHandler(async (req, res) => {
-const { email, password } = req.body
+  const { email, password } = req.body
 
   const user = await User.findOne({ email })
 
@@ -11,17 +11,18 @@ const { email, password } = req.body
     res.json({
       _id: user._id,
       email: user.email,
+      phone: user.phone,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     })
   } else {
     res.status(401)
     throw new Error('Invalid email or password')
- }
+  }
 })
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { email, password } = req.body
+  const { email, password, phone } = req.body
 
   const userExists = await User.findOne({ email })
 
@@ -33,12 +34,14 @@ const registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({
     email,
     password,
+    phone,
   })
 
   if (user) {
     res.status(201).json({
       _id: user._id,
       email: user.email,
+      phone: user.phone,
       isAdmin: user.isAdmin,
       token: generateToken(user._id),
     })
@@ -59,7 +62,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
     })
   } else {
     res.status(404)
-   throw new Error('User not found')
+    throw new Error('User not found')
   }
 })
 
@@ -123,6 +126,7 @@ const updateUser = asyncHandler(async (req, res) => {
   if (user) {
     user.name = req.body.name || user.name
     user.email = req.body.email || user.email
+    user.phone = req.body.phone || user.phone
     user.isAdmin = req.body.isAdmin || user.isAdmin
 
     const updatedUser = await user.save()
@@ -131,6 +135,7 @@ const updateUser = asyncHandler(async (req, res) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
+      phone: updatedUser.phone,
       isAdmin: updatedUser.isAdmin,
     })
   } else {

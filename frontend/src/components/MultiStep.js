@@ -9,7 +9,11 @@ const MultiStep = ({ step1, step2, step3 }) => {
         {step1 ? (
           <LinkContainer to='/wizard'>
             <Nav.Link>
-              <i className='fa-solid fa-1'></i>
+              <i
+                class='fa-solid fa-palette'
+                style={{ color: 'pink', fontSize: '40px' }}
+              ></i>
+              {/* <div styles={stepStyles.stepHeader}>1</div> */}
             </Nav.Link>
           </LinkContainer>
         ) : (
@@ -19,7 +23,10 @@ const MultiStep = ({ step1, step2, step3 }) => {
 
       <Nav.Item>
         <Nav.Link disabled>
-          <i class='fa-solid fa-arrow-right-long'></i>
+          <i
+            class='fa-solid fa-arrow-right-long'
+            style={{ fontSize: '40px' }}
+          ></i>
         </Nav.Link>
       </Nav.Item>
 
@@ -27,7 +34,10 @@ const MultiStep = ({ step1, step2, step3 }) => {
         {step2 ? (
           <LinkContainer to='/flowers'>
             <Nav.Link>
-              <i class='fa-solid fa-circle-1'>2</i>
+              <i
+                class='fa-solid fa-spa'
+                style={{ color: 'pink', fontSize: '40px' }}
+              ></i>
             </Nav.Link>
           </LinkContainer>
         ) : (
@@ -37,7 +47,10 @@ const MultiStep = ({ step1, step2, step3 }) => {
 
       <Nav.Item>
         <Nav.Link disabled>
-          <i class='fa-solid fa-arrow-right-long'></i>
+          <i
+            class='fa-solid fa-arrow-right-long'
+            style={{ fontSize: '40px' }}
+          ></i>
         </Nav.Link>
       </Nav.Item>
 
@@ -45,7 +58,10 @@ const MultiStep = ({ step1, step2, step3 }) => {
         {step3 ? (
           <LinkContainer to='/arrangments'>
             <Nav.Link>
-              <i class='fa-solid fa-circle-1'>3</i>
+              <i
+                class='fa-solid fa-circle-plus'
+                style={{ color: 'pink', fontSize: '40px' }}
+              ></i>
             </Nav.Link>
           </LinkContainer>
         ) : (
